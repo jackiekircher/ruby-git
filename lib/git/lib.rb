@@ -285,8 +285,13 @@ module Git
       command_lines('mv', ['--', file1, file2])
     end
 
-    def full_tree(sha)
-      command_lines('ls-tree', ['-r', sha])
+    def full_tree(sha, opts={})
+      command_opts = ['-r']
+      if opts[:subtrees]
+        command_opts << '-t'
+      end
+      command_opts << sha
+      command_lines('ls-tree', command_opts)
     end
 
     def tree_depth(sha)

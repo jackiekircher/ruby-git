@@ -116,8 +116,8 @@ module Git
       alias_method :subtrees, :trees
       alias_method :subdirectories, :trees
        
-      def full_tree
-        @base.lib.full_tree(@objectish)
+      def full_tree(opts={})
+        @base.lib.full_tree(@objectish, opts)
       end
                   
       def depth
